@@ -1,2 +1,4 @@
 .env
+.jshintrc
+cred_key.json
 node_modules/
