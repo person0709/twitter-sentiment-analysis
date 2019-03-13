@@ -35,7 +35,7 @@ gcloud app deploy
 
 If run locally,
 ```
-GET localhost:8000/api/analyze/
+GET localhost:8000/api/analyze/doge
 ```
 
 returns in json 
