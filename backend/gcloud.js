@@ -14,8 +14,8 @@ class Language {
             });
             return {
                 ...document,
-                "score": result[0].documentSentiment.score,
-                "magnitude": result[0].documentSentiment.magnitude
+                "score": (result[0].documentSentiment.score).toFixed(2),
+                "magnitude": (result[0].documentSentiment.magnitude).toFixed(2)
             };
         } catch (error) {
             console.log(error);

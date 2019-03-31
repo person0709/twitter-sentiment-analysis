@@ -4,21 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index"
+    "server_dev": "npm run dev --prefix backend",
+    "server_start": "npm start --prefix backend",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server_dev\" \"npm run client\"",
+    "start": "concurrently \"npm run server_start\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/person0709/twitter-sentiment-analysis.git"
   },
   "author": "Jeff Yoo",
   "license": "ISC",
-  "devDependencies": {
-    "jshint": "^2.10.1",
-    "nodemon": "^1.18.10"
+  "bugs": {
+    "url": "https://github.com/person0709/twitter-sentiment-analysis/issues"
   },
+  "homepage": "https://github.com/person0709/twitter-sentiment-analysis#readme",
   "dependencies": {
-    "@google-cloud/language": "^2.0.1",
-    "bootstrap": "^4.3.1",
-    "create-react-app": "^2.1.8",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "twit": "^2.2.11"
+    "concurrently": "^4.1.0"
   }
 }

@@ -1,4 +1,2 @@
-.env
-.jshintrc
-cred_key.json
-node_modules/
+node_modules
+.vscode
