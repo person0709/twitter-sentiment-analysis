@@ -5,12 +5,13 @@ A simple sentiment analysis tool for Twitter. It searches a set of 100 tweets ba
 
 ## Installation
 ```
-npm install
+npm run install-server
+npm run install-client
 ```
 - Create Twitter developer account and retrieve keys.
 - Create Google Cloud project and enable Google NLP API.
 - Download Auth key from the credential tab on Google Cloud Console.
-- Create a .env file on root and fill it like below
+- Create a .env file in root and fill it like below
 ```
 # twitter keys
 TWITTER_CONSUMER_KEY = YOUR_TWITTER_CONSUMER_KEY
@@ -24,14 +25,17 @@ KEYFILE_NAME = PATH/TO/YOUR/KEY.JSON
 ```
 - Run locally using Nodemon
 ```
-npm run dev
+npm run server-dev
 ```
+and open browser to navigate to "localhost:8000"
+
+
 - OR deploy on Google Cloud (provided you have Google Cloud SDK installed on your device)
 ```
 gcloud app deploy
 ```
 
-## Usage example
+## API usage example
 
 If run locally,
 ```

@@ -19,23 +19,26 @@ class App extends Component {
     }
 
     searchKeyword = () => {
+        let keyword = this.state.keyword;
         this.setState({ isLoading: true });
+        if (this.state.isFiltered) keyword+=' -filter:retweets'
 
-        // fetch(`/api/analyze/${this.state.keyword}`)
-        //     .then(res => res.json())
-        //     .then(results => {
-        //         this.setState({ ...results },
-        //             () => {
-        //                 console.log("result fetched");
-        //                 this.setState({ isLoading: false });
-        //             });
-        //     });
+        fetch(`/api/analyze/${keyword}`)
+            .then(res => res.json())
+            .then(results => {
+                this.setState({ ...results },
+                    () => {
+                        console.log("result fetched");
+                        this.setState({ isLoading: false });
+                    });
+            });
 
-        setTimeout(() => {
-            let dummy = require('./dummy.json');
-            this.setState({ ...dummy });
-            this.setState({ isLoading: false });
-        }, 2000);
+        //debug with a dummy json file
+        // setTimeout(() => {
+        //     let dummy = require('./dummy.json');
+        //     this.setState({ ...dummy });
+        //     this.setState({ isLoading: false });
+        // }, 2000);
     }
 
     render() {
@@ -59,6 +62,7 @@ class App extends Component {
                                 onClick={this.searchKeyword}
                                 isLoading={this.state.isLoading}
                                 isEmpty={!this.state.keyword}
+                                isFiltered={filtered => this.setState({isFiltered: filtered})}
                             />
                         </Container>
                     </Row>

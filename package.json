@@ -2,13 +2,14 @@
   "name": "twittersentimentanalysis",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "backend/index.js",
   "scripts": {
-    "server_dev": "npm run dev --prefix backend",
-    "server_start": "npm start --prefix backend",
+    "install-client": "cd client && npm install &&  npm run build",
+    "install-server": "cd backend && npm install",
+    "server-dev": "npm run dev --prefix backend",
+    "start": "npm start --prefix backend",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server_dev\" \"npm run client\"",
-    "start": "concurrently \"npm run server_start\" \"npm run client\""
+    "dev": "concurrently \"npm run server-dev\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   },
   "homepage": "https://github.com/person0709/twitter-sentiment-analysis#readme",
   "dependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "@google-cloud/language": "^2.0.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "twit": "^2.2.11"
   }
 }

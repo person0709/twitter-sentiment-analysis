@@ -1,7 +1,8 @@
-const express = require("express");
+const express = require('express');
 const dotnev = require('dotenv');
 const Twitter = require('./twitter');
 const Language = require('./gcloud');
+const path = require('path');
 
 dotnev.config();
 
@@ -11,9 +12,7 @@ const twitter = new Twitter();
 
 const language = new Language();
 
-app.get('/', (req, res) => {
-    res.send("Hello world!");
-});
+app.use(express.static(path.join(path.dirname(__dirname), 'client/build')));
 
 app.get('/api/analyze/:keyword', (req, res) => {
     const documents = [];
@@ -48,6 +47,10 @@ app.get('/api/analyze/:keyword', (req, res) => {
                 });
             });
     });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(path.dirname(__dirname), '/client/build/index.html'));
 });
 
 
