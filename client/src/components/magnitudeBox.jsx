@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 class MagnitudeBox extends Component {
     render() { 
         return ( 
-            <Card border='dark'>
+            <Card border='dark' >
                 <Card.Header className='scoreHeader'>
                     <h4>Magnitude</h4>
                 </Card.Header>

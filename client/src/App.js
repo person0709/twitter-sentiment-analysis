@@ -21,7 +21,7 @@ class App extends Component {
     searchKeyword = () => {
         let keyword = this.state.keyword;
         this.setState({ isLoading: true });
-        if (this.state.isFiltered) keyword+=' -filter:retweets'
+        if (this.state.isFiltered) keyword += ' -filter:retweets'
 
         fetch(`/api/analyze/${keyword}`)
             .then(res => res.json())
@@ -46,23 +46,23 @@ class App extends Component {
             <>
                 <NavBar />
                 <Container className='mainContainer'>
-                {
-                    !this.state.score &&
-                    <Row style={{paddingBottom:'5%'}}>
-                        <div>
-                                <h1>What does Twitter think?</h1>
-                                <div style={{textAlign:"center", color:"gray"}}>Sentiment analysis provided by Google Cloud NLP</div>
-                        </div>
-                    </Row>
-                }
+                    {
+                        !this.state.score &&
+                        <Row style={{ paddingBottom: '5%' }}>
+                            <div>
+                                <h1 style={{ textAlign: 'center' }}>What does Twitter think?</h1>
+                                <div style={{ textAlign: "center", color: "gray" }}>Sentiment analysis provided by Google Cloud NLP</div>
+                            </div>
+                        </Row>
+                    }
                     <Row>
-                        <Container style={{minWidth:'300px'}}>
+                        <Container style={{ minWidth: '300px' }}>
                             <InputForm
                                 onChange={this.handleInputChange}
                                 onClick={this.searchKeyword}
                                 isLoading={this.state.isLoading}
                                 isEmpty={!this.state.keyword}
-                                isFiltered={filtered => this.setState({isFiltered: filtered})}
+                                isFiltered={filtered => this.setState({ isFiltered: filtered })}
                             />
                         </Container>
                     </Row>
@@ -71,18 +71,22 @@ class App extends Component {
                             this.state.score &&
                             <Container className='resultContainer'>
                                 <Row>
-                                    <Col>
+                                    <Col style={{ marginBottom: '10px' }}>
                                         <ScoreBar
                                             score={this.state.score}
                                         />
                                     </Col>
-                                    <Col md="auto">
+                                    <Col md="auto" style={{ marginBottom: '10px' }}>
                                         <MagnitudeBox
                                             magnitude={this.state.magnitude}
                                         />
                                     </Col>
+                                    <span style={{ padding: '10px', marginBottom: '40px' }}>N.B. This is <strong>NOT</strong>
+                                        an entity sentiment analysis, meaning the score is based on the entire tweet 
+                                        rather than on the keyword in the context of the tweet. Entity sentiment analysis 
+                                        provided by Google Cloud NLP isn't very accurate nor reliable at the moment.
+                                    </span>
                                 </Row>
-                                <br />
                                 <Row>
                                     <HighlightList
                                         negatives={this.state.negHighlights}
